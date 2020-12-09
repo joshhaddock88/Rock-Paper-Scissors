@@ -56,33 +56,69 @@
         if (userSelection === rock) {
             if (computerSelection === paper) {
                 alert(loseMessage);
+                return('lose');
             } else if (computerSelection === scissors) {
                 alert(winMessage);
+                return('win');
             } else if (computerSelection === rock) {
                 alert(tieMessage);
+                return('tie');
             }
         } else if (userSelection === paper) {
             if (computerSelection === scissors) {
                 alert(loseMessage);
+                return('lose');
             } else if (computerSelection === rock) {
                 alert(winMessage);
+                return('win');
             } else if (computerSelection === paper) {
                 alert(tieMessage);
+                return('tie');
             }
         } else if (userSelection === scissors) {
             if (computerSelection === rock) {
                 alert(loseMessage);
+                return('lose');
             } else if (computerSelection === paper) {
                 alert(winMessage);
+                return('win');
             } else if (computerSelection === scissors) {
                 alert(tieMessage);
+                return('tie');
             }
         }
       }
 
-      //Create a function that takes singleGame and iterates through it for 5 consecutive rounds.
-      //At the beginning of each round it will call
+      //Create a function that takes singleGame and iterates through it for 5 consecutive rounds
+      //At the beginning of each round it will output the round number and then run through the entire singGame function
       //Alert user of winner
+      function fiveRoundGame(oneGame) {
+        let win = 0;
+        let lose = 0;
+        let tie = 0;
+        alert("Ready to play a five round game of Rock, Paper, Scissors?");
+        alert("Let's play!");
+        for (round = 1; round <= 5; round++) {
+            alert(`Round ${round}!`);
+            let outCome = singleGame(userPlay(), computerPlay());
+            if (outCome === 'win') {
+                win += 1;
+            } else if (outCome === 'lose') {
+                lose += 1;
+            } else if (outCome === 'tie') {
+                tie += 1;
+            }
+            let endOfRound = `End of Round ${round}! The score is Computer: ${lose} vs User: ${win}`
+            alert(endOfRound);
+        }
+        if (win > lose) {
+            alert("You win!");
+        } else if (win === lose) {
+            alert("It's a tie!");
+        } else {
+            alert("You lose!");
+        }
+    }
   </script>
 </body>
 </html>
