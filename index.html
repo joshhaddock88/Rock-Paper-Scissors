@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+      //Create a function which will have computer generate random output of rock, paper or scissors
+      /**So, what if I assigned rock paper scissors number values, and depend **/
+      const rock = 'rock';
+      const paper = 'paper';
+      const scissors = 'scissors';
+      
+      function computerPlay(randomChoice) {
+          let choices = [rock, paper, scissors];
+          randomChoice = choices[Math.floor(Math.random() * choices.length)];
+          return randomChoice;
+      }
+      //Create a function which prompts user for input, evaluates the data case insensitive, and re-prompts if value entered doesn't match constraints.
+      function userPlay(promptedChoice) {
+          let userPrompt = prompt("Make your choice: rock, paper, or scissors?");
+          let userInput = userPrompt.toLowerCase();
+          if (userInput === rock) {
+              let userInput = rock;
+              alert(`You chose ${userInput}!`)
+              return userInput
+          } else if (userInput === paper) {
+              let userInput = paper;
+              alert(`You chose ${userInput}!`)
+              return userInput
+          } else if (userInput === scissors) {
+              let userInput = scissors;
+              alert(`You chose ${userInput}!`)
+              return userInput
+          } else {
+              while (userInput !== 'rock' || userInput !== 'paper' || userInput !== 'scissors') {
+                let userInput = prompt("That's not really an option, try again.");
+                  if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors') {
+                  alert(`You chose ${userInput}!`)  
+                  return userInput;
+                  }
+              }
+          }
+          
+        }
+      
+      // Create a function which prompts user and generates a random output from the computer.
+      //Compare the value based on rock > scissors, scissors > paper, paper > rock. How to do that?
+      /**So, I could just compare all the option but that seems like a lot. **/
+      function singleGame(userSelection, computerSelection) {
+        const loseMessage = `The computer chose ${computerSelection}. You lose!`;
+        const winMessage = `The computer chose ${computerSelection}. You win!`;
+        const tieMessage = `The computer chose ${computerSelection}. It's a tie!`
+
+        if (userSelection === rock) {
+            if (computerSelection === paper) {
+                alert(loseMessage);
+            } else if (computerSelection === scissors) {
+                alert(winMessage);
+            } else if (computerSelection === rock) {
+                alert(tieMessage);
+            }
+        } else if (userSelection === paper) {
+            if (computerSelection === scissors) {
+                alert(loseMessage);
+            } else if (computerSelection === rock) {
+                alert(winMessage);
+            } else if (computerSelection === paper) {
+                alert(tieMessage);
+            }
+        } else if (userSelection === scissors) {
+            if (computerSelection === rock) {
+                alert(loseMessage);
+            } else if (computerSelection === paper) {
+                alert(winMessage);
+            } else if (computerSelection === scissors) {
+                alert(tieMessage);
+            }
+        }
+      }
+
+      //Create a function that takes singleGame and iterates through it for 5 consecutive rounds.
+      //At the beginning of each round it will call
+      //Alert user of winner
+  </script>
+</body>
+</html>
