@@ -95,6 +95,7 @@
       function fiveRoundGame(oneGame) {
         let win = 0;
         let lose = 0;
+        //This tie option is kinda superflous. I just left it here in case I want to keep track of ties later down the road. But currenlty it's not being used.
         let tie = 0;
         alert("Ready to play a five round game of Rock, Paper, Scissors?");
         alert("Let's play!");
@@ -108,6 +109,7 @@
             } else if (outCome === 'tie') {
                 tie += 1;
             }
+            //endOfRound function has to go at end of loop, otherwise the score in the alert will always be one round behind
             let endOfRound = `End of Round ${round}! The score is Computer: ${lose} vs User: ${win}`
             alert(endOfRound);
         }
