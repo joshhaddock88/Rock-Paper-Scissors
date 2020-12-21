@@ -3,124 +3,42 @@
 <head>
   <title>Rock Paper Scissors</title>
   <meta charset="UTF-8"/>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <script>
-      //Create a function which will have computer generate random output of rock, paper or scissors
-      /**So, what if I assigned rock paper scissors number values, and depend **/
-      const rock = 'rock';
-      const paper = 'paper';
-      const scissors = 'scissors';
-      
-      function computerPlay(randomChoice) {
-          let choices = [rock, paper, scissors];
-          randomChoice = choices[Math.floor(Math.random() * choices.length)];
-          return randomChoice;
-      }
-      //Create a function which prompts user for input, evaluates the data case insensitive, and re-prompts if value entered doesn't match constraints.
-      function userPlay(promptedChoice) {
-          let userPrompt = prompt("Make your choice: rock, paper, or scissors?");
-          let userInput = userPrompt.toLowerCase();
-          if (userInput === rock) {
-              let userInput = rock;
-              alert(`You chose ${userInput}!`)
-              return userInput
-          } else if (userInput === paper) {
-              let userInput = paper;
-              alert(`You chose ${userInput}!`)
-              return userInput
-          } else if (userInput === scissors) {
-              let userInput = scissors;
-              alert(`You chose ${userInput}!`)
-              return userInput
-          } else {
-              while (userInput !== 'rock' || userInput !== 'paper' || userInput !== 'scissors') {
-                let userInput = prompt("That's not really an option, try again.");
-                  if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors') {
-                  alert(`You chose ${userInput}!`)  
-                  return userInput;
-                  }
-              }
-          }
-          
-        }
-      
-      // Create a function which prompts user and generates a random output from the computer.
-      //Compare the value based on rock > scissors, scissors > paper, paper > rock. How to do that?
-      /**So, I could just compare all the option but that seems like a lot. **/
-      function singleGame(userSelection, computerSelection) {
-        const loseMessage = `The computer chose ${computerSelection}. You lose!`;
-        const winMessage = `The computer chose ${computerSelection}. You win!`;
-        const tieMessage = `The computer chose ${computerSelection}. It's a tie!`
-
-        if (userSelection === rock) {
-            if (computerSelection === paper) {
-                alert(loseMessage);
-                return('lose');
-            } else if (computerSelection === scissors) {
-                alert(winMessage);
-                return('win');
-            } else if (computerSelection === rock) {
-                alert(tieMessage);
-                return('tie');
-            }
-        } else if (userSelection === paper) {
-            if (computerSelection === scissors) {
-                alert(loseMessage);
-                return('lose');
-            } else if (computerSelection === rock) {
-                alert(winMessage);
-                return('win');
-            } else if (computerSelection === paper) {
-                alert(tieMessage);
-                return('tie');
-            }
-        } else if (userSelection === scissors) {
-            if (computerSelection === rock) {
-                alert(loseMessage);
-                return('lose');
-            } else if (computerSelection === paper) {
-                alert(winMessage);
-                return('win');
-            } else if (computerSelection === scissors) {
-                alert(tieMessage);
-                return('tie');
-            }
-        }
-      }
-
-      //Create a function that takes singleGame and iterates through it for 5 consecutive rounds
-      //At the beginning of each round it will output the round number and then run through the entire singGame function
-      //Alert user of winner
-      function fiveRoundGame(oneGame) {
-        let win = 0;
-        let lose = 0;
-        //This tie option is kinda superflous. I just left it here in case I want to keep track of ties later down the road. But currenlty it's not being used.
-        let tie = 0;
-        alert("Ready to play a five round game of Rock, Paper, Scissors?");
-        alert("Let's play!");
-        for (round = 1; round <= 5; round++) {
-            alert(`Round ${round}!`);
-            let outCome = singleGame(userPlay(), computerPlay());
-            if (outCome === 'win') {
-                win += 1;
-            } else if (outCome === 'lose') {
-                lose += 1;
-            } else if (outCome === 'tie') {
-                tie += 1;
-            }
-            //endOfRound function has to go at end of loop, otherwise the score in the alert will always be one round behind
-            let endOfRound = `End of Round ${round}! The score is Computer: ${lose} vs User: ${win}`
-            alert(endOfRound);
-        }
-        if (win > lose) {
-            alert("You win!");
-        } else if (win === lose) {
-            alert("It's a tie!");
-        } else {
-            alert("You lose!");
-        }
-    }
+<body></body>
+    <div>
+        <audio data-key="1" src="audio/Smash.wav"></audio>
+        <audio data-key="2" src="audio/paperCrumple.wav"></audio>
+        <audio data-key="3" src="audio/Slice.wav"></audio>
+        <audio data-key="0" src="audio/introMusic.wav" id="openingMusic"></audio>
+        
+    </div>
+    <div class="banner">
+        <h2>Five Rounds</h2>
+        <h2>One winner</h2>
+        <h2>Make your choice</h2>
+    </div>
+    <div class="buttons">
+        <div class="rock">
+            <button class="button" id="rock" value="rock" onclick="singleGame(this.value)"><img src="images/Rock.png"></button>
+            <span class="sound">Rock</span>
+        </div>
+        <div class="paper">
+            <button class="button" id="paper" value="paper" onclick="singleGame(this.value)"><img src="images/Paper.png"></button>
+            <span class="sound">Paper</span>
+        </div>
+        <div class="scissors">
+            <button class= "button" id="scissors" value="scissors" onclick="singleGame(this.value)"><img src="images/Scissors.jpg"></button>
+            <span class="sound">Scissors</span>
+        </div>
+    </div>
+    <div class="scoreboard">
+        <h1 id="scoreHeader">Score</h1>
+        <h2 id="win" class="scores">Win:</h2>
+        <h2 id="loss" class="scores">Lose:</h2>
+        <h2 id="tie" class="scores">Tie:</h2>
+    </div>
+  <script src="script.js">
   </script>
 </body>
 </html>
