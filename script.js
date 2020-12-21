@@ -19,41 +19,45 @@ function computerPlay(randomChoice) {
 /**So, I could just compare all the option but that seems like a lot. **/
 function singleGame(userSelection) {
     let computerSelection = computerPlay();
-    const loseMessage = `The computer chose ${computerSelection}. You lose!`;
-    const winMessage = `The computer chose ${computerSelection}. You win!`;
-    const tieMessage = `The computer chose ${computerSelection}. It's a tie!`
+    const intro = document.getElementById('intro');
+    intro.innerText = "The computer chose";
+    const computer = document.getElementById('computer');
+    computer.innerText = `${computerSelection}`;
+    const outcome = document.getElementById('outcome');
+    const winMessage = `You win!`;
+    const tieMessage = `It's a tie!`
 
     if (userSelection === rock) {
         if (computerSelection === paper) {
-            alert(loseMessage);
-            return('lose');
+            outcome.innerText = 'You lose!'
+            return('lose')
         } else if (computerSelection === scissors) {
-            alert(winMessage);
+            outcome.innerText = 'You win!'
             return('win');
         } else if (computerSelection === rock) {
-            alert(tieMessage);
+            outcome.textContent = `It's a tie!`;
             return('tie');
         }
     } else if (userSelection === paper) {
         if (computerSelection === scissors) {
-            alert(loseMessage);
-            return('lose');
+            outcome.innerText = 'You lose!'
+            return('lose')
         } else if (computerSelection === rock) {
-            alert(winMessage);
+            outcome.innerText = 'You win!';
             return('win');
         } else if (computerSelection === paper) {
-            alert(tieMessage);
+            outcome.innerText = `It's a tie!`;
             return('tie');
         }
     } else if (userSelection === scissors) {
         if (computerSelection === rock) {
-            alert(loseMessage);
-            return('lose');
+            outcome.innerText = 'You lose!'
+            return('lose')
         } else if (computerSelection === paper) {
-            alert(winMessage);
+            outcome.innerText = 'You win!';
             return('win');
         } else if (computerSelection === scissors) {
-            alert(tieMessage);
+            outcome.innerText = `It's a tie!`;
             return('tie');
         }
     }
