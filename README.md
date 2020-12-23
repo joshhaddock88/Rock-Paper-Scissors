@@ -1,2 +1,2 @@
 # Rock-Paper-Scissors
-This is a javascript program that will run in the console. The user will play five rounds of "Rock, Paper, Scissors" against the computer. The program will declare a winner after each round and then tally the total and return the overall winner.
+This simple webpage will play rock, paper, scissors with a user. The purpose of this project was to integrate JavaScript, HTML, and CSS. I accomplished this by using vanilla JavaScript to manipulate the DOM in order to create elements, event listeners, and attributes.
