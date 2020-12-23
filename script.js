@@ -3,28 +3,29 @@
 
 
 //Universal Variables
-//Keeps track of score
 let round = 0;
 let win = 0;
 let lose = 0;
 let tie = 0;
+//The buttons on the page
 const rock = document.getElementById('rock').value;
 const paper = document.getElementById('paper').value;
 const scissors = document.getElementById('scissors').value;
 const buttons = document.querySelectorAll('button');
 const restartButton = document.querySelector('#inputButton');
+//Hides the reset button until five rounds are played
 restartButton.style.display = 'none'
 restartButton.addEventListener('click', () => {
     resetGame();
 })
-//A loop to tall rounds
+//A loop to play all rounds
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        singleGame(button.value);
         playSound(button.value);
+        singleGame(button.value);
     })
 })
-//Function to play sound when a button is pressed
+
 function playSound(id) {
     const rockAudio = document.querySelector('#rockSound');
     const paperAudio = document.querySelector('#paperSound');
@@ -91,7 +92,7 @@ function singleGame(userSelection) {
         intro.innerText = "Press button to play again";
         computer.innerText = 'the one below...';
         outcome.innerText = 'further down...';
-        restartButton.style.display = 'flex';
+        restartButton.value = 'This buttonzz'
     } else {
         if (userSelection === rock) {
             if (computerSelection === paper) {
@@ -139,6 +140,8 @@ function singleGame(userSelection) {
         round += 1;
         roundNumber.innerText = `Round: ${round}`
         if(round === 5) {
+            restartButton.style.display = 'flex';
+            restartButton.value = 'Play again?'
             intro.innerText = 'Game Over';
         if(win > lose) {
             computer.innerText = 'You have won!';
