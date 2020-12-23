@@ -12,14 +12,19 @@ const rock = document.getElementById('rock').value;
 const paper = document.getElementById('paper').value;
 const scissors = document.getElementById('scissors').value;
 const buttons = document.querySelectorAll('button');
-//A loop to tall rounds.
+const restartButton = document.querySelector('#inputButton');
+restartButton.style.display = 'none'
+restartButton.addEventListener('click', () => {
+    resetGame();
+})
+//A loop to tall rounds
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         singleGame(button.value);
         playSound(button.value);
     })
 })
-
+//Function to play sound when a button is pressed
 function playSound(id) {
     const rockAudio = document.querySelector('#rockSound');
     const paperAudio = document.querySelector('#paperSound');
@@ -36,6 +41,29 @@ function playSound(id) {
     }
 }
 }
+//Resets round number, score, and makes reset button disappear.
+function resetGame (e) {
+    round = 0;
+    win = 0;
+    lose = 0
+    tie = 0;
+    const roundNumber = document.getElementById('round');
+    const intro = document.getElementById('intro');
+    const computer = document.getElementById('computer');
+    const outcome = document.getElementById('outcome');
+    const winNumber = document.getElementById('win');
+    const lossNumber = document.getElementById('loss');
+    const tieNumber = document.getElementById('tie');
+    intro.innerText = 'Five Rounds';
+    computer.innerText = 'One winner';
+    outcome.innerText = 'Make your choice';
+    roundNumber.innerText = `Round: ${round}`;
+    winNumber.innerText = `Win: ${win}`;
+    lossNumber.innerText = `Lose: ${lose}`;
+    tieNumber.innerText = `Tie: ${tie}`;
+    restartButton.style.display = 'none';
+}
+
 
 function computerPlay(randomChoice) {
     let choices = [rock, paper, scissors];
@@ -60,17 +88,10 @@ function singleGame(userSelection) {
     
 
     if(round === 5) {
-        intro.innerText = 'Game Over';
-        if(win > lose) {
-            computer.innerText = 'You have won!';
-            outcome.innerText = 'Congratulations!';
-        } else if (lose > win) {
-            computer.innerText = 'Oh, you lost...';
-            outcome.innerText = 'I am so, so sorry...';
-        } else if (tie > win && tie > lose) {
-            computer.innerText = 'My, my, my,'
-            outcome.innerText = 'Somehow you tied...'
-        }
+        intro.innerText = "Press button to play again";
+        computer.innerText = 'the one below...';
+        outcome.innerText = 'further down...';
+        restartButton.style.display = 'flex';
     } else {
         if (userSelection === rock) {
             if (computerSelection === paper) {
@@ -117,5 +138,18 @@ function singleGame(userSelection) {
         }
         round += 1;
         roundNumber.innerText = `Round: ${round}`
+        if(round === 5) {
+            intro.innerText = 'Game Over';
+        if(win > lose) {
+            computer.innerText = 'You have won!';
+            outcome.innerText = 'Congratulations!';
+        } else if (lose > win) {
+            computer.innerText = 'Oh, you lost...';
+            outcome.innerText = 'I am so, so sorry...';
+        } else if (tie > win && tie > lose) {
+            computer.innerText = 'My, my, my,'
+            outcome.innerText = 'Somehow you tied...'
+        }
+        }     
     }
 }

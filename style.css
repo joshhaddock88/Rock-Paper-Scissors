@@ -61,33 +61,31 @@ html {
     padding: 15px;
 }
 
-.restartButton {
-    display: inline-block;
-    border-radius: 10px;
-    margin: 25px;
-    width: 20%;
-    padding: 10px;
-    color: rgb(0, 20, 53);
-    background-color: rgba(253, 253, 253, 0.99);
+.belowButtons {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
 }
-.restartButtonHidden {
-    display: none;
-    visibility: hidden;
+
+.restartButton {
+    margin-right: 25%;
+    
 }
 
 #inputButton {
-    display: inline-block;
+    display: flex;
     font-size: 20px;
     border-radius: 10px;
     margin: 25px;
     padding: 10px;
-    width: 20%;
     outline: none;
 }
 
 .scoreboard {
-    display: block;
-    margin-left: auto;
+    display: flex;
+    flex-direction: column;
     font-size: 15px;
     border-style: solid;
     border-radius: 20px;
