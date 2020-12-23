@@ -7,10 +7,10 @@
 </head>
 <body></body>
     <div>
-        <audio data-key="1" src="audio/Smash.wav"></audio>
-        <audio data-key="2" src="audio/paperCrumple.wav"></audio>
-        <audio data-key="3" src="audio/Slice.wav"></audio>
-        <audio data-key="0" src="audio/introMusic.wav" id="openingMusic"></audio>
+        <audio class="rock" id="rockSound" src="audio/Smash.wav"></audio>
+        <audio class="paper" id="paperSound" src="audio/paperCrumple.wav"></audio>
+        <audio class="scissors" id="scissorsSound" src="audio/Slice.wav"></audio>
+        <audio src="audio/introMusic.wav" id="openingMusic"></audio>
         
     </div>
     <div class="banner">
@@ -20,24 +20,29 @@
     </div>
     <div class="buttons">
         <div class="rock">
-            <button class="button" id="rock" value="rock" onclick="singleGame(this.value)"><img src="images/Rock.png"></button>
+            <button class="button" id="rock" value="rock"><img src="images/Rock.png"></button>
             <span class="sound">Rock</span>
         </div>
         <div class="paper">
-            <button class="button" id="paper" value="paper" onclick="singleGame(this.value)"><img src="images/Paper.png"></button>
+            <button class="button" id="paper" value="paper"><img src="images/Paper.png"></button>
             <span class="sound">Paper</span>
         </div>
         <div class="scissors">
-            <button class= "button" id="scissors" value="scissors" onclick="singleGame(this.value)"><img src="images/Scissors.jpg"></button>
+            <button class= "button" id="scissors" value="scissors"><img src="images/Scissors.jpg"></button>
             <span class="sound">Scissors</span>
         </div>
     </div>
-    <div class="scoreboard">
-        <h1 id="scoreHeader">Score</h1>
-        <h2 id="round" class="scores">Round:</h2>
-        <h2 id="win" class="scores">Win:</h2>
-        <h2 id="loss" class="scores">Lose:</h2>
-        <h2 id="tie" class="scores">Tie:</h2>
+    <div class="belowButtons">
+        <div class="restartButtonHide">
+            <input id="inputButton" type="button" name="restartButton" value="Play again?">
+        </div>
+        <div class="scoreboard">
+            <h1 id="scoreHeader">Score</h1>
+            <h2 id="round" class="scores">Round:</h2>
+            <h2 id="win" class="scores">Win:</h2>
+            <h2 id="loss" class="scores">Lose:</h2>
+            <h2 id="tie" class="scores">Tie:</h2>
+        </div>
     </div>
   <script src="script.js">
   </script>
